@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import WelcomePage from './components/welcome-page/WelcomePage';
+import CasinoPage from './components/casino-page/CasinoPage';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      page: 'welcome'
+    }
+  }
+
+  onClickPlay = () => {
+    this.setState({page: 'casino'})
+  }
+
+  onClickQuit = () => {
+    this.setState({page:'welcome'})
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='App'>
+        {
+          this.state.page === 'welcome'
+          ? <WelcomePage onClickPlay={this.onClickPlay}/>
+          : <CasinoPage onClickQuit={this.onClickQuit}/>
+        }
       </div>
     );
   }
