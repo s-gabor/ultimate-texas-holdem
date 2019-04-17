@@ -1,0 +1,20 @@
+.player-bets {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.trips, .bet {
+    border: 3px solid;
+}
+
+.trips {
+    width: 65px;
+    height: 65px;
+    transform: rotate(45deg);
+    color: darkred;
+}
+
+.bet {
+    width: 65px;
+    height: 65px;
+}

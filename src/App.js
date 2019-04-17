@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import WelcomePage from './components/welcome-page/WelcomePage';
-import CasinoPage from './components/casino-page/CasinoPage';
+import PokerRoom from './components/poker-room/PokerRoom';
 
 class App extends Component {
   constructor() {
@@ -12,11 +12,7 @@ class App extends Component {
   }
 
   onClickPlay = () => {
-    this.setState({page: 'casino'})
-  }
-
-  onClickQuit = () => {
-    this.setState({page:'welcome'})
+    this.setState({page: 'poker-room'});
   }
 
   render() {
@@ -25,7 +21,7 @@ class App extends Component {
         {
           this.state.page === 'welcome'
           ? <WelcomePage onClickPlay={this.onClickPlay}/>
-          : <CasinoPage onClickQuit={this.onClickQuit}/>
+          : <PokerRoom />
         }
       </div>
     );
