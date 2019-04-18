@@ -19,9 +19,9 @@ html, body {
 }
 
 body {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   
   background-image: radial-gradient(#2f9c63, #13262b);
 }

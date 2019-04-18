@@ -17,7 +17,7 @@ class BettingActions extends React.Component{
                 totalBet: 0
             },
             stats: {
-                balance: 1000,
+                balance: this.props.balance,
                 win: 0,
                 info: 'choose chips',
                 bet: 0
@@ -26,11 +26,9 @@ class BettingActions extends React.Component{
         }
     }
 
-    onClickChips = (e, value) => {
-        // console.log(e.currentTarget); // runs twice. WHY!??? bc setState is async and once the fn is called and once when state is updated ?
+    onClickChips = (value) => {
         this.setState({selectedChips: value});
         this.setState((previousState) => {
-            previousState.selectedChips = value;
             previousState.stats.info = 'Bet on Ante/Blind and/or Trips';
             return previousState;
         });
@@ -129,6 +127,7 @@ class BettingActions extends React.Component{
     }
 
     render() {
+        const { cards, lifeCycleGame } = this.props;
         return (
             <div className='m-5'>
                 <Spots  
@@ -140,11 +139,11 @@ class BettingActions extends React.Component{
                 {
                     this.props.lifeCycleGame === 'results'
                         ?   <Results 
-                                cards={this.props.cards}
+                                cards={cards}
                             />
                         :   <ButtonsRaise // 4x 3x CHECK // 2x CHECK // 1x FOLD
                                 bets={this.state.bets}
-                                lifeCycleGame={this.props.lifeCycleGame}
+                                lifeCycleGame={lifeCycleGame}
                                 raise={this.raiseBet}
                                 check={this.checkBet}
                                 deal={this.dealCards}

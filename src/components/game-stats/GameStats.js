@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 const GameStats = ({ stats }) => {
     return (
-        <div>
+        <div className='mt-5'>
             <Button variant="secondary" size="sm">BALANCE: {stats.balance}</Button>
             <Button variant="secondary" size="sm">WIN: {stats.win}</Button>
             <Button variant="secondary" size="sm">Info: {stats.info}</Button>

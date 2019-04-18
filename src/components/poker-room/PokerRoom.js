@@ -6,8 +6,8 @@ import BettingActions from '../betting-actions/BettingActions';
 
 
 class PokerRoom extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             deck: new Deck(),
             cards: {
@@ -15,7 +15,7 @@ class PokerRoom extends React.Component {
                 table: ['card', 'card', 'card', 'card', 'card'],
                 player: ['card', 'card']
             },
-            balance: 500,
+            // balance: this.props.balance,
             lifeCycleGame: 'initial-bet' // initial-bet / raise / re-raise / final-bet / results
         }
     }
@@ -63,6 +63,7 @@ class PokerRoom extends React.Component {
     }
 
     render() {
+        const { balance } = this.props;
         return (
             <Container>
                 <Cards 
@@ -70,7 +71,7 @@ class PokerRoom extends React.Component {
                 />
 
                 <BettingActions
-                    balance={this.state.balance}
+                    balance={balance}
                     cards={this.state.cards}
                     lifeCycleGame={this.state.lifeCycleGame}
                     updateLifeCycleGame={this.updateLifeCycleGame}

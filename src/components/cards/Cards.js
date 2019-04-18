@@ -6,7 +6,7 @@ import PlayerCards from '../player-cards/PlayerCards';
 
 const Cards = ({ cards }) => {
     return (
-        <div>
+        <div className='mt-5'>
             <DealerCards cards={cards.dealer}/>
             <TableCards cards={cards.table}/>
             <PlayerCards cards={cards.player}/>
