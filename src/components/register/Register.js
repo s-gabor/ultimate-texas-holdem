@@ -30,7 +30,7 @@ class Register extends React.Component {
     onSubmitRegister = (event) => {
         event.preventDefault();
 
-        fetch('http://localhost:3005/register', {
+        fetch('https://ultimate-texas-holdem-api.herokuapp.com/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
