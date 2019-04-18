@@ -15,13 +15,17 @@ class App extends Component {
     this.setState({page: 'poker-room'});
   }
 
+  onClickQuit = () => {
+    this.setState({page:'welcome'});
+  }
+
   render() {
     return (
       <div className='App'>
         {
           this.state.page === 'welcome'
           ? <WelcomePage onClickPlay={this.onClickPlay}/>
-          : <PokerRoom />
+          : <PokerRoom onClickQuit={this.onClickQuit} />
         }
       </div>
     );
