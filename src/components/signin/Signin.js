@@ -24,23 +24,44 @@ class Signin extends React.Component {
     
     onSubmitSignIn = (event) => {
         event.preventDefault();
+        const apiUrl = 'https://ultimate-texas-holdem-api.herokuapp.com';
 
-        fetch('https://ultimate-texas-holdem-api.herokuapp.com/signin', {
-                method: 'post',
+        const handleUserSignin = (user) => {
+            if (user.email === this.state.signInEmail) {
+                this.props.loadUser(user);
+                this.props.onRouteChange('home');
+            }
+        }
+
+        async function getUserData(url, email, password) {
+            const response = await fetch(url, {
+                method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    email: this.state.signInEmail,
-                    password: this.state.signInPassword
+                    email: email,
+                    password: password
                 })
             })
-            .then(response => response.json())
-            .then(user => {
-                if (user.email === this.state.signInEmail) {
-                    this.props.loadUser(user);
-                    this.props.onRouteChange('home');
-                }
-            })
-            .catch((err) => console.log('got this error in fetch: ', err))
+            const userObj = await response.json();
+            return userObj;
+        }
+
+        getUserData(apiUrl + '/signin', this.state.signInEmail, this.state.signInPassword)
+            .then(user => handleUserSignin(user))
+            .catch(err => console.error(err))
+
+
+        // fetch(apiUrl + '/signin', {
+        //         method: 'post',
+        //         headers: {'Content-Type': 'application/json'},
+        //         body: JSON.stringify({
+        //             email: this.state.signInEmail,
+        //             password: this.state.signInPassword
+        //         })
+        //     })
+        //     .then(response => response.json())
+        //     .then(user => handleUserSignin(user))
+        //     .catch(err => console.error(err))
     }
 
     render() {

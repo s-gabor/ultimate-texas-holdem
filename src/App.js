@@ -4,6 +4,7 @@ import Navigation from './components/navigation/Navigation';
 import Signin from './components/signin/Signin';
 import Register from './components/register/Register';
 import PokerRoom from './components/poker-room/PokerRoom';
+import Sound from './components/sound/Sound';
 
 
 const initialState = {
@@ -54,6 +55,7 @@ class App extends React.Component {
           ? <div>
               <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
               <PokerRoom balance={this.state.user.balance}/>
+              <Sound />
             </div>
           : (
             route === 'signin'
